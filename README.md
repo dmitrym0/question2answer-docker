@@ -38,8 +38,7 @@ db:
 * Q2A 1.7.3 -> 1.7.5
 * Adds the following plugins
   * [NoahY/q2a-badges](https://github.com/NoahY/q2a-badges)
-  * [arjunsuresh/q2a-categoryexperts](https://github.com/arjunsuresh/q2a-categoryexperts)
-  * [jhubert/qa-hipchat-notifications](https://github.com/)
+  * [jhubert/qa-hipchat-notifications](https://github.com/jhubert/qa-hipchat-notifications)
   * [zakkak/qa-ldap-login](https://github.com/zakkak/qa-ldap-login)
   * [arjunsuresh/q2a-xml-rpc](https://github.com/arjunsuresh/q2a-xml-rpc)
   * [nakov/q2a-plugin-open-questions](https://github.com/nakov/q2a-plugin-open-questions)

@@ -28,7 +28,6 @@ ADD q2a-install-plugin /usr/local/bin/q2a-install-plugin
 
 # Install some common plugins
 RUN /usr/local/bin/q2a-install-plugin NoahY/q2a-badges && \
-    /usr/local/bin/q2a-install-plugin arjunsuresh/q2a-categoryexperts && \
 	/usr/local/bin/q2a-install-plugin jhubert/qa-hipchat-notifications && \
 	/usr/local/bin/q2a-install-plugin zakkak/qa-ldap-login && \
 	/usr/local/bin/q2a-install-plugin arjunsuresh/q2a-xml-rpc && \
