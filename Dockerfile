@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:5.6-apache
 MAINTAINER Mats Löfgren <mats.lofgren@matzor.eu>
 MAINTAINER Guy Pascarella <guy.pascarella@gmail.com>
 
@@ -28,13 +28,13 @@ ADD q2a-install-plugin /usr/local/bin/q2a-install-plugin
 
 # Install some common plugins
 RUN /usr/local/bin/q2a-install-plugin NoahY/q2a-badges && \
-	/usr/local/bin/q2a-install-plugin jhubert/qa-hipchat-notifications && \
-	/usr/local/bin/q2a-install-plugin zakkak/qa-ldap-login && \
-	/usr/local/bin/q2a-install-plugin arjunsuresh/q2a-xml-rpc && \
-	/usr/local/bin/q2a-install-plugin nakov/q2a-plugin-open-questions && \
-	/usr/local/bin/q2a-install-plugin q2a-projects/q2a-tag-descriptions && \
-	/usr/local/bin/q2a-install-plugin arjunsuresh/categorydescription && \
-	/usr/local/bin/q2a-install-plugin arjunsuresh/tag-search
+    /usr/local/bin/q2a-install-plugin jhubert/qa-hipchat-notifications && \
+    /usr/local/bin/q2a-install-plugin zakkak/qa-ldap-login && \
+    /usr/local/bin/q2a-install-plugin arjunsuresh/q2a-xml-rpc && \
+    /usr/local/bin/q2a-install-plugin nakov/q2a-plugin-open-questions && \
+    /usr/local/bin/q2a-install-plugin q2a-projects/q2a-tag-descriptions && \
+    /usr/local/bin/q2a-install-plugin arjunsuresh/categorydescription && \
+    /usr/local/bin/q2a-install-plugin arjunsuresh/tag-search
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chown root:root /entrypoint.sh

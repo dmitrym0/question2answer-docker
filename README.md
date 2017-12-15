@@ -32,10 +32,16 @@ db:
 
 ```
 
-# This Fork
+## This Fork (disrvptor)
 
-* PHP 5.6 -> 7.2
+### Updates and Upgrades
+
 * Q2A 1.7.3 -> 1.7.5
+
+Note: An upgrade to PHP 7.2 was attempted, but too many warnings were displayed in the rendered pages.
+
+### Plugins
+
 * Adds the following plugins
   * [NoahY/q2a-badges](https://github.com/NoahY/q2a-badges)
   * [jhubert/qa-hipchat-notifications](https://github.com/jhubert/qa-hipchat-notifications)
@@ -45,3 +51,5 @@ db:
   * [q2a-projects/q2a-tag-descriptions](https://github.com/q2a-projects/q2a-tag-descriptions)
   * [arjunsuresh/categorydescription](https://github.com/arjunsuresh/categorydescription)
   * [arjunsuresh/tag-search](https://github.com/arjunsuresh/tag-search)
+
+Note: category experts was attempted, but there is an initialization bug where it expects a database table that it doesn't create.
