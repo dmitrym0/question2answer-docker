@@ -4,12 +4,19 @@ MAINTAINER Guy Pascarella <guy.pascarella@gmail.com>
 
 RUN a2enmod rewrite
 
+# Install ldap stuff via
+# https://github.com/docker-library/php/issues/75#issuecomment-82075678
+
 RUN apt-get update && apt-get install -y \
-    git libfreetype6-dev libpng-dev libjpeg-dev zlib1g unzip wget && \
+    git libfreetype6-dev libpng-dev libjpeg-dev zlib1g unzip wget patch dos2unix \
+    ldap-utils libldap-2.4-2-dbg libldap2-dev php5-ldap && \
     rm -rf /var/lib/apt/lists/* && \
+    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+    docker-php-ext-install ldap && \
     docker-php-ext-install mysqli mbstring && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ &&\
-    docker-php-ext-install gd calendar
+    docker-php-ext-install gd calendar && \
+	php5enmod ldap
 
 
 ENV Q2A_VERSION 1.7.5
@@ -35,6 +42,13 @@ RUN /usr/local/bin/q2a-install-plugin NoahY/q2a-badges && \
     /usr/local/bin/q2a-install-plugin q2a-projects/q2a-tag-descriptions && \
     /usr/local/bin/q2a-install-plugin arjunsuresh/categorydescription && \
     /usr/local/bin/q2a-install-plugin arjunsuresh/tag-search
+
+# Patch login per instructions of qa-ldap-login
+ADD login.php.patch /var/www/html/qa-include/pages/login.php.patch
+RUN find /var/www/html/ -iname "*.php" -exec dos2unix {} \; && \
+    patch --backup /var/www/html/qa-include/pages/login.php < /var/www/html/qa-include/pages/login.php.patch
+
+ADD php.ini /usr/local/etc/php/php.ini
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chown root:root /entrypoint.sh

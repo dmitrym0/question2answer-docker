@@ -1,0 +1,10 @@
+--- login.php	2017-12-16 20:56:14.000000000 -0500
++++ login-ldap.php	2017-12-16 21:12:54.000000000 -0500
+@@ -50,6 +50,7 @@
+ 		if (qa_user_limits_remaining(QA_LIMIT_LOGINS)) {
+ 			require_once QA_INCLUDE_DIR.'db/users.php';
+ 			require_once QA_INCLUDE_DIR.'db/selects.php';
++			require_once QA_INCLUDE_DIR.'../qa-plugin/qa-ldap-login/qa-ldap-process.php';
+ 
+ 			if (!qa_check_form_security_code('login', qa_post_text('code')))
+ 				$pageerror=qa_lang_html('misc/form_security_again');
