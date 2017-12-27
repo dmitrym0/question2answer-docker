@@ -6,18 +6,17 @@ RUN a2enmod rewrite
 
 # Install ldap stuff via
 # https://github.com/docker-library/php/issues/75#issuecomment-82075678
+# Slightly modified for the new way debian-jessie works
 
 RUN apt-get update && apt-get install -y \
-    git libfreetype6-dev libpng-dev libjpeg-dev zlib1g unzip wget patch dos2unix \
-    ldap-utils libldap-2.4-2-dbg libldap2-dev php5-ldap && \
+    git libfreetype6-dev libpng-dev libjpeg-dev zlib1g unzip wget patch dos2unix vim \
+    ldap-utils libldap-2.4-2 libldap-2.4-2-dbg libldap2-dev && \
     rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
     docker-php-ext-install ldap && \
     docker-php-ext-install mysqli mbstring && \
     docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ &&\
-    docker-php-ext-install gd calendar && \
-	php5enmod ldap
-
+    docker-php-ext-install gd calendar
 
 ENV Q2A_VERSION 1.7.5
 ENV Q2A_FILE_NAME question2answer-${Q2A_VERSION}.zip
