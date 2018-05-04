@@ -41,7 +41,8 @@ RUN /usr/local/bin/q2a-install-plugin NoahY/q2a-badges && \
     /usr/local/bin/q2a-install-plugin q2a-projects/q2a-tag-descriptions && \
     /usr/local/bin/q2a-install-plugin arjunsuresh/categorydescription && \
     /usr/local/bin/q2a-install-plugin arjunsuresh/tag-search && \
-    /usr/local/bin/q2a-install-plugin svivian/q2a-markdown-editor
+    /usr/local/bin/q2a-install-plugin svivian/q2a-markdown-editor && \
+    /usr/local/bin/q2a-install-plugin LeonardChallis/q2a-slack
 
 # Patch login per instructions of qa-ldap-login
 ADD login.php.patch /var/www/html/qa-include/pages/login.php.patch
